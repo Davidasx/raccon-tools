@@ -208,3 +208,35 @@ th {
     display: inline-block;
     text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
 }
+
+/* 页脚样式 */
+.footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.footer-link {
+    color: #3498db;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+}
+
+.footer-link:hover {
+    color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.github-icon {
+    vertical-align: middle;
+}
+
+.footer-separator {
+    margin: 0 10px;
+    color: #ccc;
+}
