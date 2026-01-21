@@ -376,8 +376,15 @@ function runRange() {
                 const threshold = Math.round((def + cor) * 10) / 10;
                 if (threshold > low && threshold <= high) {
                     if (!milestones[threshold]) milestones[threshold] = [];
+                    const probValue = parseFloat(p);
+                    const probText =
+                        probValue >= 200
+                            ? "Double"
+                            : probValue >= 120
+                              ? "Crit"
+                              : p + "%";
                     milestones[threshold].push(
-                        `<span class="mob-name" style="background:${rar.color}">${mob}</span> ${p}%`,
+                        `<span class="mob-name" style="background:${rar.color}">${mob}</span> ${probText}`,
                     );
                 }
             });
