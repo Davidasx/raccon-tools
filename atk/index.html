@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Raccon ATK/DEF计算器</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Raccon ATK/DEF计算器</h1>
+
+            <!-- 标签页切换 -->
+            <div class="tabs">
+                <button
+                    class="tab-btn active"
+                    onclick="switchTab('probability')"
+                >
+                    打怪概率
+                </button>
+                <button class="tab-btn" onclick="switchTab('range')">
+                    ATK变化查询
+                </button>
+            </div>
+
+            <!-- 打怪概率功能 -->
+            <div class="tab-content" id="probabilityTab">
+                <div class="card">
+                    <h3>打怪概率</h3>
+                    <div class="input-group">
+                        <label for="atkInput">输入 ATK:</label>
+                        <input
+                            type="number"
+                            id="atkInput"
+                            step="0.1"
+                            value="65.0"
+                            oninput="runQuery()"
+                        />
+                    </div>
+                    <div class="filter-section">
+                        <div class="rarity-filters" id="rarityFilters"></div>
+                        <div class="search-box">
+                            <input
+                                type="text"
+                                id="mobSearch"
+                                placeholder="搜索怪物名称..."
+                                oninput="runQuery()"
+                            />
+                        </div>
+                    </div>
+                    <div id="singleQueryResult"></div>
+                </div>
+            </div>
+
+            <!-- ATK变化查询功能 -->
+            <div class="tab-content" id="rangeTab" style="display: none">
+                <div class="card">
+                    <h3>ATK变化影响</h3>
+                    <div class="input-group">
+                        <label>范围:</label>
+                        <input
+                            type="number"
+                            id="rangeStart"
+                            step="0.1"
+                            value="65.0"
+                            oninput="runRange()"
+                        />
+                        <span>至</span>
+                        <input
+                            type="number"
+                            id="rangeEnd"
+                            step="0.1"
+                            value="86.0"
+                            oninput="runRange()"
+                        />
+                    </div>
+                    <div id="rangeResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

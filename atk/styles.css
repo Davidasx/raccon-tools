@@ -1,0 +1,210 @@
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333;
+    --border-radius: 8px;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* 标签页样式 */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    border: none;
+    background: #fff;
+    color: #666;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tab-btn:hover {
+    background: #f0f0f0;
+    transform: translateY(-2px);
+}
+
+.tab-btn.active {
+    background: #3498db;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.tab-content {
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 布局卡片 */
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 120px;
+}
+
+label {
+    font-weight: bold;
+}
+
+/* 表格样式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f8f9fa;
+}
+
+/* 稀有度标签样式 */
+.rarity-tag {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #000;
+    font-weight: bold;
+    font-size: 0.85em;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.milestone-item {
+    padding: 10px;
+    border-left: 4px solid #3498db;
+    background: #f9f9f9;
+    margin-bottom: 8px;
+}
+
+.atk-val {
+    font-family: monospace;
+    font-weight: bold;
+    color: #e67e22;
+    font-size: 1.1em;
+}
+
+.empty-hint {
+    color: #999;
+    font-style: italic;
+}
+
+/* 筛选区域样式 */
+.filter-section {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.rarity-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.rarity-filter-btn {
+    padding: 6px 12px;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: all 0.2s;
+    color: #000;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+.rarity-filter-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.rarity-filter-btn.active {
+    border-color: #000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-box {
+    margin-top: 10px;
+}
+
+.search-box input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+/* 彩色怪物名称样式 */
+.mob-name {
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: inline-block;
+    text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+}
