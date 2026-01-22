@@ -10,6 +10,34 @@
         <div class="container">
             <h1>Raccon ATK/DEF计算器</h1>
 
+            <!-- 顶部链接区域 -->
+            <div style="text-align: center">
+                <div class="header-links">
+                    <a
+                        href="https://github.com/Davidasx/raccon-tools"
+                        target="_blank"
+                        class="header-link"
+                    >
+                        <svg
+                            class="link-icon"
+                            viewBox="0 0 16 16"
+                            width="16"
+                            height="16"
+                        >
+                            <path
+                                fill="currentColor"
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+                            />
+                        </svg>
+                        GitHub
+                    </a>
+                    <span class="link-separator">|</span>
+                    <button class="disclaimer-btn" onclick="showDisclaimer()">
+                        免责声明
+                    </button>
+                </div>
+            </div>
+
             <!-- 标签页切换 -->
             <div class="tabs">
                 <button
@@ -79,29 +107,59 @@
             </div>
         </div>
 
+        <!-- 免责声明模态框 -->
+        <div id="disclaimerModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-close" onclick="hideDisclaimer()"
+                        >&times;</span
+                    >
+                    <h2>免责声明</h2>
+                </div>
+                <div class="disclaimer-text">
+                    <p><strong>关于本工具</strong></p>
+                    <p>
+                        本工具（Raccon
+                        ATK/DEF计算器）是由玩家社区开发的非官方辅助工具，旨在帮助
+                        Ruarua.ru 游戏玩家更好地理解和计算游戏机制。
+                    </p>
+
+                    <p><strong>版权声明</strong></p>
+                    <p>
+                        Ruarua.ru 游戏及其所有相关内容的版权归 Auricat Studio
+                        所有。本工具：
+                    </p>
+                    <ul>
+                        <li>未使用游戏的任何静态资源（图片、音频等）</li>
+                        <li>未直接请求或调用游戏的 API 接口</li>
+                        <li>仅使用玩家社区通过合法游戏过程反推的计算公式</li>
+                        <li>
+                            不涉及任何反编译、破解或未授权访问游戏数据的行为
+                        </li>
+                    </ul>
+
+                    <p><strong>使用须知</strong></p>
+                    <ul>
+                        <li>本工具为免费提供，仅供学习和参考使用</li>
+                        <li>使用本工具产生的任何后果由用户自行承担</li>
+                        <li>本工具提供的计算结果可能存在误差，仅供参考</li>
+                        <li>请遵守 Ruarua.ru 的游戏条款和使用规则</li>
+                    </ul>
+
+                    <p><strong>联系与移除</strong></p>
+                    <p>
+                        如果 Auricat Studio 或 Ruarua.ru
+                        的版权方认为本工具侵犯了其权益，请通过 GitHub
+                        页面联系我们，我们将立即下架本工具并删除相关内容。
+                    </p>
+
+                    <p class="disclaimer-footer">最后更新：2026年1月</p>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
-            <a
-                href="https://github.com/Davidasx/raccon-tools"
-                target="_blank"
-                class="footer-link"
-            >
-                <svg
-                    class="github-icon"
-                    viewBox="0 0 16 16"
-                    width="20"
-                    height="20"
-                >
-                    <path
-                        fill="currentColor"
-                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
-                    />
-                </svg>
-                GitHub
-            </a>
-            <span class="footer-separator">|</span>
-            <a href="https://davidx.top" target="_blank" class="footer-link"
-                >Homepage</a
-            >
+            <p>© 2026 Made by <a href="https://davidx.top" target="_blank">DavidX</a></p>
         </footer>
 
         <script src="script.js"></script>

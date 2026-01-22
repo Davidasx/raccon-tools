@@ -282,7 +282,7 @@ function runQuery() {
             if (atk >= def + cor) bestProb = Math.max(bestProb, parseFloat(p));
         });
 
-        if (bestProb > 0) {
+        if (bestProb >= 0) {
             hasResults = true;
             const hits = getLootHits(mob, rar, atk);
             const probText =
@@ -393,10 +393,26 @@ function runRange() {
             if (rar.id >= 7) {
                 const baseHp = MOB_HEALTH[mob] || 0;
                 const thresholdDmg = baseHp * rar.hpMult * 0.05;
+                // 获取最低概率所需的ATK（即能打这个怪物的最低ATK）
+                const probs = PROB_MAP[rar.id];
+                const minProbEntry = Object.entries(probs).reduce(
+                    (min, entry) => {
+                        return parseFloat(entry[0]) < parseFloat(min[0])
+                            ? entry
+                            : min;
+                    },
+                );
+                const minAtkRequired = def + minProbEntry[1];
+
                 // 计算从 1 刀到 20 刀的临界点
                 for (let h = 1; h <= 20; h++) {
                     const hitAtk = Math.ceil((thresholdDmg / h) * 10) / 10;
-                    if (hitAtk > low && hitAtk <= high) {
+                    // 只有当该ATK值足够打这个怪物时，才显示Loot信息
+                    if (
+                        hitAtk > low &&
+                        hitAtk <= high &&
+                        hitAtk >= minAtkRequired
+                    ) {
                         if (!milestones[hitAtk]) milestones[hitAtk] = [];
                         milestones[hitAtk].push(
                             `<span class="mob-name" style="background:${rar.color}">${mob}</span> ${h} 刀 loot`,
@@ -447,6 +463,34 @@ function switchTab(tabName) {
         document.querySelectorAll(".tab-btn")[1].classList.add("active");
     }
 }
+
+// 模态框控制函数
+function showDisclaimer() {
+    const modal = document.getElementById("disclaimerModal");
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden"; // 防止背景滚动
+}
+
+function hideDisclaimer() {
+    const modal = document.getElementById("disclaimerModal");
+    modal.classList.remove("show");
+    document.body.style.overflow = "auto"; // 恢复滚动
+}
+
+// 点击模态框外部关闭
+window.onclick = function (event) {
+    const modal = document.getElementById("disclaimerModal");
+    if (event.target === modal) {
+        hideDisclaimer();
+    }
+};
+
+// ESC键关闭模态框
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        hideDisclaimer();
+    }
+});
 
 // 初始化运行
 document.addEventListener("DOMContentLoaded", function () {
