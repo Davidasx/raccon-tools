@@ -317,15 +317,20 @@ function runQuery() {
 
             if (showLootColumns) {
                 // 计算更少刀数所需ATK（仅适用于Ultimate/Supreme）
+                // 对于没有概率击败的怪物（bestProb为0），Loot刀数显示为"-"
+                let lootHitsText = "-";
                 let fewerHitsAtk = "-";
-                if (hits && hits > 1) {
-                    const baseHp = MOB_HEALTH[mob] || 0;
-                    const totalHp = baseHp * (rar.hpMult || 1);
-                    const threshold = totalHp * 0.05;
-                    const nextHits = hits - 1;
-                    const requiredAtk =
-                        Math.ceil((threshold / nextHits) * 10) / 10;
-                    fewerHitsAtk = requiredAtk.toFixed(1);
+                if (bestProb > 0 && hits) {
+                    lootHitsText = hits + " 刀";
+                    if (hits > 1) {
+                        const baseHp = MOB_HEALTH[mob] || 0;
+                        const totalHp = baseHp * (rar.hpMult || 1);
+                        const threshold = totalHp * 0.05;
+                        const nextHits = hits - 1;
+                        const requiredAtk =
+                            Math.ceil((threshold / nextHits) * 10) / 10;
+                        fewerHitsAtk = requiredAtk.toFixed(1);
+                    }
                 }
 
                 html += `<tr>
@@ -333,7 +338,7 @@ function runQuery() {
                     <td>${probText}</td>
                     <td>${nextProbText}</td>
                     <td>${nextAtkText}</td>
-                    <td>${hits ? hits + " 刀" : "-"}</td>
+                    <td>${lootHitsText}</td>
                     <td>${fewerHitsAtk}</td>
                 </tr>`;
             } else {
