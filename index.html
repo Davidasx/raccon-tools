@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Raccon Tools - 工具导航</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family:
+                    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                    Oxygen, Ubuntu, Cantarell, sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .container {
+                max-width: 800px;
+                width: 100%;
+            }
+
+            h1 {
+                color: white;
+                text-align: center;
+                font-size: 3rem;
+                margin-bottom: 1rem;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+            .subtitle {
+                color: rgba(255, 255, 255, 0.9);
+                text-align: center;
+                font-size: 1.2rem;
+                margin-bottom: 3rem;
+            }
+
+            .tools-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .tool-card {
+                background: white;
+                border-radius: 12px;
+                padding: 30px;
+                text-decoration: none;
+                color: #333;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .tool-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .tool-icon {
+                font-size: 3rem;
+                margin-bottom: 15px;
+            }
+
+            .tool-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+                color: #667eea;
+            }
+
+            .tool-description {
+                color: #666;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            footer {
+                text-align: center;
+                margin-top: 3rem;
+                color: rgba(255, 255, 255, 0.8);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Raccon Tools</h1>
+            <p class="subtitle">Raccon 实用工具集合</p>
+
+            <div class="tools-grid">
+                <a href="/atk" class="tool-card">
+                    <div class="tool-icon">⚔️</div>
+                    <div class="tool-title">ATK/DEF计算器</div>
+                    <div class="tool-description">计算打怪所需攻击力</div>
+                </a>
+            </div>
+
+            <footer>
+                <p>
+                    © 2026 Made by
+                    <a
+                        href="https://davidx.top"
+                        target="_blank"
+                        rel="noopener"
+                        >DavidX</a
+                    >
+                </p>
+            </footer>
+        </div>
+    </body>
+</html>
