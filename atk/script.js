@@ -42,7 +42,7 @@ const MOB_HEALTH = {
     Ghost: 2000,
     Slime: 1200,
     Chest: 1000,
-    Kitten: 600,
+    Kitten: 800,
     Angel: 1400,
     Rooster: 1000,
     Printer: 1000,
