@@ -1,5 +1,4 @@
-// --- 数据定义 ---
-const MOB_VALUES = {
+const mobValues = {
     "Black Hole": -1,
     Ghost: -0.5,
     Slime: 0,
@@ -35,9 +34,12 @@ const MOB_VALUES = {
     "Unique Ladybug": 5,
     "Huge Spider": 5,
     "Inspo Shroom": 5.5,
+    Hermit: 3,
+    Ore: 1.5,
+    "Terra Slime": 2.5,
 };
 
-const MOB_HEALTH = {
+const mobHealth = {
     "Black Hole": 800,
     Ghost: 2000,
     Slime: 1200,
@@ -55,7 +57,6 @@ const MOB_HEALTH = {
     Runner: 1200,
     Mushbug: 900,
     Leafbug: 1300,
-    Dove: 2000,
     Bomber: 1250,
     Shell: 1800,
     Needle: 1300,
@@ -70,6 +71,7 @@ const MOB_HEALTH = {
     "Giant Chest": 2200,
     "Unique Ladybug": 3000,
     "Huge Spider": 3000,
+    "Inspo Shroom": 1000,
     Mlime: 2500,
     "Vivid Kitten": 1200,
     "Vivid Bee": 1600,
@@ -192,14 +194,14 @@ const PROB_MAP = {
 function getDEF(mob, rar) {
     const slot = rar.id > 2 ? Math.min(rar.id + 3, 10) : 5;
     let val = slot * rar.atk;
-    const mv = MOB_VALUES[mob] || 0;
+    const mv = mobValues[mob] || 0;
     val += mv > 0 ? mv * rar.factor : mv;
     return Math.floor(val * 10 + 0.9) / 10;
 }
 
 function getLootHits(mob, rar, atk) {
     if (rar.id < 7) return null;
-    const baseHp = MOB_HEALTH[mob] || 0;
+    const baseHp = mobHealth[mob] || 0;
     const totalHp = baseHp * (rar.hpMult || 1);
     const threshold = totalHp * 0.05;
     return Math.ceil(threshold / atk);
@@ -269,7 +271,7 @@ function runQuery() {
 
     let hasResults = false;
 
-    Object.keys(MOB_VALUES).forEach((mob) => {
+    Object.keys(mobValues).forEach((mob) => {
         // 检查怪物名称是否匹配搜索
         if (searchTerm && !mob.toLowerCase().includes(searchTerm)) return;
 
@@ -323,7 +325,7 @@ function runQuery() {
                 if (bestProb > 0 && hits) {
                     lootHitsText = hits + " 刀";
                     if (hits > 1) {
-                        const baseHp = MOB_HEALTH[mob] || 0;
+                        const baseHp = mobHealth[mob] || 0;
                         const totalHp = baseHp * (rar.hpMult || 1);
                         const threshold = totalHp * 0.05;
                         const nextHits = hits - 1;
@@ -373,7 +375,7 @@ function runRange() {
     let milestones = {};
 
     RARITIES.forEach((rar) => {
-        Object.keys(MOB_VALUES).forEach((mob) => {
+        Object.keys(mobValues).forEach((mob) => {
             const def = getDEF(mob, rar);
 
             // 1. 概率转折点
@@ -396,7 +398,7 @@ function runRange() {
 
             // 2. Loot 刀数转折点 (仅 Ultimate/Supreme)
             if (rar.id >= 7) {
-                const baseHp = MOB_HEALTH[mob] || 0;
+                const baseHp = mobHealth[mob] || 0;
                 const thresholdDmg = baseHp * rar.hpMult * 0.05;
                 // 获取最低概率所需的ATK（即能打这个怪物的最低ATK）
                 const probs = PROB_MAP[rar.id];
