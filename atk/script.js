@@ -33,6 +33,7 @@ const mobValues = {
     "Shiny Slime": 4,
     Shopkeeper: 1.2,
     Slime: 0,
+    "Slime King": 2,
     "Soldier Ant": 1.5,
     Spider: 3,
     "Terra Slime": 2.5,
