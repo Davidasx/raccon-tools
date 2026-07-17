@@ -57,7 +57,7 @@ const mobHealth = {
     "Giant Chest": 2500,
     Hermit: 2000,
     "Huge Spider": 2500,
-    "Inspo Shroom": 1000,
+    "Inspo Shroom": 3000,
     Jellyfish: 1200,
     Kitten: 800,
     Ladybug: 900,
